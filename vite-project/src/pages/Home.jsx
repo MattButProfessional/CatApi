@@ -1,5 +1,5 @@
 import "../css/Home.css";
-import CatCard from "../components/CatCard";
+import CatImg from "../components/CatImg";
 import { useState, useEffect } from "react";
 import { getRandomCatImg } from "../services/api";
 
@@ -31,7 +31,7 @@ function Home() {
     <div className="home">
       <div>
         {catImgs.map((catImg, idx) => (
-          <CatCard catImg={catImg} key={idx} />
+          <CatImg catImg={catImg} key={idx} />
         ))}
       </div>
     </div>

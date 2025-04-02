@@ -3,7 +3,7 @@ import "../css/CatImg.css";
 import { getRandomCatImg } from "../services/api";
 
 function CatImg({ cat }) {
-  return <img src={{ getRandomCatImg }} alt={cat.tags} />;
+  return <img src={"https://cataas.com/cat"} alt={cat.id} />;
 }
 
 export default CatImg;
