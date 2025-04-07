@@ -30,6 +30,7 @@ function Home() {
   }, []);
   return (
     <div className="home">
+      <button>Random Cat</button>
       <div>
         {catImgs.map((catImg, idx) => (
           <CatImg catImg={catImg} key={idx} />
