@@ -1,7 +1,8 @@
-const BASE_URL = "https://cataas.com";
+const BASE_URL = "https://cataas.com/api/cats?tags=&skip=0&limit=1";
 
 export const getRandomCatImg = async () => {
-  const response = await fetch(`${BASE_URL}/cat`);
+  const response = await fetch(`${BASE_URL}`);
   const data = await response.json();
-  return data.results;
+  //console.log(data);
+  return data;
 };

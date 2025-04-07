@@ -16,6 +16,7 @@ function Home() {
         setLoading(true);
         const randomCat = await getRandomCatImg();
         setCatImg(randomCat);
+        console.log(catImgs);
         setError(null);
       } catch (err) {
         console.error(err);
