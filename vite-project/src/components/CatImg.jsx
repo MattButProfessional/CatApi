@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import "../css/CatImg.css";
-import { getRandomCatImg } from "../services/api";
 
-function CatImg({ cat }) {
-  return <img src={"https://cataas.com/cat?type=medium"} alt={"cat.id"} />;
+function CatImg({ catImg }) {
+  return (
+    <div>
+      <img src={catImg} alt="Random Cat" />
+    </div>
+  );
 }
 
 export default CatImg;

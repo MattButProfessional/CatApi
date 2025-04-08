@@ -2,6 +2,7 @@ import "../css/Home.css";
 import CatImg from "../components/CatImg";
 import { useState, useEffect } from "react";
 import { getRandomCatImg } from "../services/api";
+import RandBtn from "../components/RandBtn";
 
 function Home() {
   // useState hook
@@ -10,27 +11,30 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadRandomCat = async () => {
-      try {
-        setLoading(true);
-        const randomCat = await getRandomCatImg();
-        setCatImg(randomCat);
-        console.log(catImgs);
-        setError(null);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load cat");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadRandomCat = async () => {
+    try {
+      setLoading(true);
+      const randomCat = await getRandomCatImg();
+      setCatImg([randomCat]);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to load cat");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadRandomCat();
-  }, []);
+  });
   return (
     <div className="home">
-      <button>Random Cat</button>
+      <div>
+        <button type="button" onClick={loadRandomCat}>
+          Random Cat
+        </button>
+      </div>
       <div>
         {catImgs.map((catImg, idx) => (
           <CatImg catImg={catImg} key={idx} />
