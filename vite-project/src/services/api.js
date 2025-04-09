@@ -19,3 +19,20 @@ export const getRandomCatImg = async () => {
     return null;
   }
 };
+
+export const getRandomCatInfo = async () => {
+  try {
+    const res = await fetch(BASE_URL);
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await res.json();
+
+    const catId = data[Math.floor(Math.random() * 1500)].id;
+
+    return catId;
+  } catch (err) {
+    console.error("Error fetching the cat info:", err);
+    return null;
+  }
+};

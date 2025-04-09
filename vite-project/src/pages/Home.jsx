@@ -1,11 +1,13 @@
 import "../css/Home.css";
 import CatImg from "../components/CatImg";
+import CatInfo from "../components/CatInfo";
 import { useState, useEffect } from "react";
-import { getRandomCatImg } from "../services/api";
+import { getRandomCatImg, getRandomCatInfo } from "../services/api";
 import RandBtn from "../components/RandBtn";
 
 function Home() {
   const [catImg, setCatImg] = useState(null);
+  const [catInfo, setCatInfo] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +16,8 @@ function Home() {
       setLoading(true);
       const randomCat = await getRandomCatImg();
       setCatImg(randomCat);
+      const randomCatInfo = await getRandomCatInfo();
+      setCatInfo(randomCatInfo);
       setError(null);
     } catch (err) {
       console.error(err);
@@ -39,6 +43,7 @@ function Home() {
         {error && <p>{error}</p>}
         {catImg && <CatImg catImg={catImg} />}
       </div>
+      <div>{catInfo && <CatInfo catInfo={catInfo} />}</div>
     </div>
   );
 }
