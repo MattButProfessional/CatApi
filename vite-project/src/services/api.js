@@ -1,23 +1,21 @@
-const BASE_URL = "https://cataas.com/api/cats?tags=&skip=0&limit=1";
+const BASE_URL = "https://cataas.com/api/cats?tags=&skip=0&limit=1500";
 
 export const getRandomCatImg = async () => {
   try {
-    const response = await fetch(BASE_URL);
-    if (!response.ok) {
+    const res = await fetch(BASE_URL);
+    if (!res.ok) {
       throw new Error("Network response was not ok");
     }
-    const data = await response.json();
-    // console.log("API Response:", data);
+    const data = await res.json();
+    console.log("Raw API data:", data);
 
-    // Ensure we have the id to construct the image URL
-    if (Array.isArray(data) && data[0]?.id) {
-      const catImageUrl = `https://cataas.com/cat/${data[0].id}?type=medium`;
-      return catImageUrl;
-    } else {
-      throw new Error("No cat image ID found");
-    }
-  } catch (error) {
-    console.error("Error fetching the cat image:", error);
-    throw error;
+    const catId = data[Math.floor(Math.random() * 1500)].id;
+    const imageUrl = `https://cataas.com/cat/${catId}?type=medium`;
+    console.log("🐱 Image URL:", imageUrl);
+
+    return imageUrl;
+  } catch (err) {
+    console.error("Error fetching the cat image:", err);
+    return null;
   }
 };

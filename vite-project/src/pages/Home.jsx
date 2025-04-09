@@ -5,9 +5,7 @@ import { getRandomCatImg } from "../services/api";
 import RandBtn from "../components/RandBtn";
 
 function Home() {
-  // useState hook
-  const [searchQuery, setSearchQuery] = useState("");
-  const [catImgs, setCatImg] = useState([]);
+  const [catImg, setCatImg] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +13,7 @@ function Home() {
     try {
       setLoading(true);
       const randomCat = await getRandomCatImg();
-      setCatImg([randomCat]);
+      setCatImg(randomCat);
       setError(null);
     } catch (err) {
       console.error(err);
@@ -27,7 +25,8 @@ function Home() {
 
   useEffect(() => {
     loadRandomCat();
-  });
+  }, []);
+
   return (
     <div className="home">
       <div>
@@ -36,11 +35,12 @@ function Home() {
         </button>
       </div>
       <div>
-        {catImgs.map((catImg, idx) => (
-          <CatImg catImg={catImg} key={idx} />
-        ))}
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {catImg && <CatImg catImg={catImg} />}
       </div>
     </div>
   );
 }
+
 export default Home;
