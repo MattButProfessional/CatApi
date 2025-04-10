@@ -7,11 +7,9 @@ export const getRandomCatImg = async () => {
       throw new Error("Network response was not ok");
     }
     const data = await res.json();
-    // console.log("Raw API data:", data);
-
-    const catId = data[Math.floor(Math.random() * 1500)].id;
-
-    return catId;
+    console.log("Raw API data:", data);
+    const cat = data[Math.floor(Math.random() * 1500)];
+    return cat;
   } catch (err) {
     console.error("Error fetching the cat image:", err);
     return null;

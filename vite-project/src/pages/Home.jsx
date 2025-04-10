@@ -6,16 +6,26 @@ import { getRandomCatImg } from "../services/api";
 function Home() {
   const [catImg, setCatImg] = useState(null);
   const [catImgId, setCatImgId] = useState(null);
+  const [catImgTags, setCatImgTags] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const loadRandomCat = async () => {
     try {
       setLoading(true);
-      const randomCatId = await getRandomCatImg();
+      const randomCat = await getRandomCatImg();
+      const randomCatId = randomCat.id;
+      const randomCatTags = randomCat.tags;
+      if (randomCatTags != "") {
+        setCatImgTags(randomCatTags);
+      } else {
+        setCatImgTags("No Tags");
+      }
       const imageUrl = `https://cataas.com/cat/${randomCatId}?type=medium`;
       console.clear();
       console.log("🐱 Image URL:", imageUrl);
+      console.log("🐱 Image Id: ", randomCatId);
+      console.log("🐱 Image Tags: ", randomCatTags);
       setCatImg(imageUrl);
       setCatImgId(randomCatId);
       setError(null);
@@ -41,7 +51,9 @@ function Home() {
       <div>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {catImg && <CatImg catImg={catImg} catImgId={catImgId} />}
+        {catImg && (
+          <CatImg catImg={catImg} catImgId={catImgId} catImgTags={catImgTags} />
+        )}
       </div>
     </div>
   );
