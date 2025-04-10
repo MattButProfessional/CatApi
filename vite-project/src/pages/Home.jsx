@@ -1,23 +1,23 @@
 import "../css/Home.css";
 import CatImg from "../components/CatImg";
-import CatInfo from "../components/CatInfo";
 import { useState, useEffect } from "react";
-import { getRandomCatImg, getRandomCatInfo } from "../services/api";
-import RandBtn from "../components/RandBtn";
+import { getRandomCatImg } from "../services/api";
 
 function Home() {
   const [catImg, setCatImg] = useState(null);
-  const [catInfo, setCatInfo] = useState(null);
+  const [catImgId, setCatImgId] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const loadRandomCat = async () => {
     try {
       setLoading(true);
-      const randomCat = await getRandomCatImg();
-      setCatImg(randomCat);
-      const randomCatInfo = await getRandomCatInfo();
-      setCatInfo(randomCatInfo);
+      const randomCatId = await getRandomCatImg();
+      const imageUrl = `https://cataas.com/cat/${randomCatId}?type=medium`;
+      console.clear();
+      console.log("🐱 Image URL:", imageUrl);
+      setCatImg(imageUrl);
+      setCatImgId(randomCatId);
       setError(null);
     } catch (err) {
       console.error(err);
@@ -41,9 +41,8 @@ function Home() {
       <div>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {catImg && <CatImg catImg={catImg} />}
+        {catImg && <CatImg catImg={catImg} catImgId={catImgId} />}
       </div>
-      <div>{catInfo && <CatInfo catInfo={catInfo} />}</div>
     </div>
   );
 }
