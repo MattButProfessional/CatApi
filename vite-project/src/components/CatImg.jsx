@@ -3,10 +3,10 @@ import "../css/CatImg.css";
 function CatImg({ catImg, catImgId, catImgTags }) {
   return (
     <div>
-      <img src={catImg} alt="Random Cat" />
-      <div>
-        <div>Id: {catImgId}</div>
-        <div>Tags: {catImgTags}</div>
+      <img src={catImg} alt="Your Random Cat Did Not Load" />
+      <div className="InfoText">
+        <div className="InfoText">Id: {catImgId}</div>
+        <div className="InfoText">Tags: {catImgTags}</div>
       </div>
     </div>
   );

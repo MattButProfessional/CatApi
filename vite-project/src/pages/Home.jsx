@@ -43,12 +43,12 @@ function Home() {
 
   return (
     <div className="home">
-      <div>
+      <div className="CatFullCard">
         <button type="button" onClick={loadRandomCat}>
           Random Cat
         </button>
       </div>
-      <div>
+      <div className="CatFullCard">
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {catImg && (
