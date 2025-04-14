@@ -15,3 +15,8 @@ export const getRandomCatImg = async () => {
     return null;
   }
 };
+export const searchCats = async (query) => {
+  const response = await fetch(BASE_URL);
+  const data = await response.json();
+  return data.results;
+};
