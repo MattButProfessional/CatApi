@@ -5,3 +5,15 @@ button {
   color: #d19de8;
   font-size: 40px;
 }
+.darkBtn {
+  width: 80px;
+  height: 80px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}

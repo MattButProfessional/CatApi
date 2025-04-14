@@ -9,6 +9,7 @@ function Home() {
   const [catImgTags, setCatImgTags] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isLightMode, setIsLightMode] = useState(true);
 
   const loadRandomCat = async () => {
     try {
@@ -37,6 +38,12 @@ function Home() {
     }
   };
 
+  const changeBackground = () => {
+    const isWhite = !isLightMode;
+    document.body.style.backgroundColor = isWhite ? "#ffffff" : "#120017";
+    setIsLightMode(isWhite);
+  };
+
   useEffect(() => {
     loadRandomCat();
   }, []);
@@ -55,6 +62,9 @@ function Home() {
           <CatImg catImg={catImg} catImgId={catImgId} catImgTags={catImgTags} />
         )}
       </div>
+      <button type="button" className="darkBtn" onClick={changeBackground}>
+        {isLightMode ? "🌙" : "☀️"}
+      </button>
     </div>
   );
 }
