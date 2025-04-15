@@ -45,6 +45,44 @@ function SearchScreen() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </form>{" "}
+      <div className="SearchOptions">
+        <input
+          type="checkbox"
+          id="GifCheck"
+          name="GifCheck"
+          value="Gif"
+        ></input>
+        <label for="GifCheck">Gif</label>
+
+        <label for="ImgSize">Image Size</label>
+        <select name="ImgSize" id="ImgSize">
+          <option value="xsmall">Extra Small</option>
+          <option value="small">Small</option>
+          <option value="medium ">Medium </option>
+          <option value="square">Square</option>
+        </select>
+
+        <input type="text" />
+
+        <label for="FontSize">Font Size:</label>
+        <input
+          type="number"
+          id="FontSize"
+          name="FontSize"
+          min="0"
+          max="10000"
+        ></input>
+
+        <label for="FontColor">Font Color:</label>
+        <input
+          type="color"
+          id="FontColor"
+          name="FontColor"
+          value="#ff0000"
+        ></input>
+
+        {/* <input type="submit"></input> */}
+      </div>
       <button type="button" className="darkBtn" onClick={changeBackground}>
         {isLightMode ? "🌙" : "☀️"}
       </button>

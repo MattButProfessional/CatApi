@@ -1,5 +1,9 @@
 img {
+  width: 400px;
+  border-width: 10px;
+  border-style: solid;
   border-radius: 10px;
+  border-color: #631786;
 }
 
 .InfoText {
@@ -8,6 +12,8 @@ img {
   overflow-wrap: break-word;
   word-wrap: break-word;
   width: 400px;
+  padding: 10px;
+  color: #d19de8;
 }
 
 .CatFullCard {
@@ -16,4 +22,14 @@ img {
   flex-direction: column;
   align-items: center;
   margin: 30px;
+}
+.InfoBg {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  width: 400px;
+  background-color: #631786;
+  border-radius: 10px;
+  margin-top: 10px;
 }
