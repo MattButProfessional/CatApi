@@ -1,8 +1,8 @@
 import "../css/Home.css";
-import CatImg from "../components/CatImg";
 import { useState, useEffect } from "react";
 import { getRandomCatImg } from "../services/api";
 import { searchCats } from "../services/api";
+import "../css/Search.css";
 
 function SearchScreen() {
   const [catImg, setCatImg] = useState(null);
@@ -44,45 +44,45 @@ function SearchScreen() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </form>{" "}
-      <div className="SearchOptions">
-        <input
-          type="checkbox"
-          id="GifCheck"
-          name="GifCheck"
-          value="Gif"
-        ></input>
-        <label for="GifCheck">Gif</label>
-
-        <label for="ImgSize">Image Size</label>
-        <select name="ImgSize" id="ImgSize">
-          <option value="xsmall">Extra Small</option>
-          <option value="small">Small</option>
-          <option value="medium ">Medium </option>
-          <option value="square">Square</option>
-        </select>
-
-        <input type="text" />
-
-        <label for="FontSize">Font Size:</label>
-        <input
-          type="number"
-          id="FontSize"
-          name="FontSize"
-          min="0"
-          max="10000"
-        ></input>
-
-        <label for="FontColor">Font Color:</label>
-        <input
-          type="color"
-          id="FontColor"
-          name="FontColor"
-          value="#ff0000"
-        ></input>
+        <div className="searchOption">
+          <input
+            type="checkbox"
+            id="GifCheck"
+            name="GifCheck"
+            value="Gif"
+          ></input>
+          <label for="GifCheck"> Gif</label>
+        </div>
+        <div className="searchOption">
+          <label for="ImgSize">Image Size: </label>
+          <select name="ImgSize" id="ImgSize">
+            <option value="xsmall">Extra Small</option>
+            <option value="small">Small</option>
+            <option value="medium ">Medium </option>
+            <option value="square">Square</option>
+          </select>
+        </div>
+        <div className="searchOption">
+          <label for="TextOverlay">(Optional) Text Overlay: </label>
+          <input type="text" id="TextOverlay" name="TextOverlay" />
+        </div>
+        <div className="searchOption">
+          <label for="FontSize">(Optional) Font Size: </label>
+          <input
+            type="number"
+            id="FontSize"
+            name="FontSize"
+            min="0"
+            max="10000"
+          ></input>
+        </div>
+        <div className="searchOption">
+          <label for="FontColor">(Optional) Font Color: </label>
+          <input type="color" id="FontColor" name="FontColor"></input>
+        </div>
 
         {/* <input type="submit"></input> */}
-      </div>
+      </form>{" "}
       <button type="button" className="darkBtn" onClick={changeBackground}>
         {isLightMode ? "🌙" : "☀️"}
       </button>
