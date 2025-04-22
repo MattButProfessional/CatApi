@@ -39,48 +39,58 @@ function SearchScreen() {
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
-          placeholder="Search for Cats..."
+          placeholder="Search for Cats With Tags..."
           className="search-input"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className="searchOption">
-          <input
-            type="checkbox"
-            id="GifCheck"
-            name="GifCheck"
-            value="Gif"
-          ></input>
-          <label for="GifCheck"> Gif</label>
+        <div className="searchOptionsGroup">
+          <div className="searchOption">
+            <label for="GifCheck"> Gif</label>
+            <input
+              className="checkbox"
+              type="checkbox"
+              id="GifCheck"
+              name="GifCheck"
+              value="Gif"
+            ></input>
+          </div>
+          <div className="searchOption">
+            <label for="ImgSize">Image Size: </label>
+            <select name="ImgSize" id="ImgSize" className="dropDown">
+              <option value="xsmall">Extra Small</option>
+              <option value="small">Small</option>
+              <option selected value="medium">
+                Medium
+              </option>
+              <option value="square">Square</option>
+            </select>
+          </div>
+          <div className="searchOption">
+            <label for="TextOverlay">(Optional) Text Overlay: </label>
+            <input
+              type="text"
+              id="TextOverlay"
+              name="TextOverlay"
+              className="textOverlay"
+            />
+          </div>
+          <div className="searchOption">
+            <label for="FontSize">(Optional) Font Size: </label>
+            <input
+              type="number"
+              id="FontSize"
+              name="FontSize"
+              min="0"
+              max="10000"
+              className="FontSizeNum"
+            ></input>
+          </div>
+          <div className="searchOption">
+            <label for="FontColor">(Optional) Font Color: </label>
+            <input type="color" id="FontColor" name="FontColor"></input>
+          </div>
         </div>
-        <div className="searchOption">
-          <label for="ImgSize">Image Size: </label>
-          <select name="ImgSize" id="ImgSize">
-            <option value="xsmall">Extra Small</option>
-            <option value="small">Small</option>
-            <option value="medium ">Medium </option>
-            <option value="square">Square</option>
-          </select>
-        </div>
-        <div className="searchOption">
-          <label for="TextOverlay">(Optional) Text Overlay: </label>
-          <input type="text" id="TextOverlay" name="TextOverlay" />
-        </div>
-        <div className="searchOption">
-          <label for="FontSize">(Optional) Font Size: </label>
-          <input
-            type="number"
-            id="FontSize"
-            name="FontSize"
-            min="0"
-            max="10000"
-          ></input>
-        </div>
-        <div className="searchOption">
-          <label for="FontColor">(Optional) Font Color: </label>
-          <input type="color" id="FontColor" name="FontColor"></input>
-        </div>
-
         {/* <input type="submit"></input> */}
       </form>{" "}
       <button type="button" className="darkBtn" onClick={changeBackground}>
