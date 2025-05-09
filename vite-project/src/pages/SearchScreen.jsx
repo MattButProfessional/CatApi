@@ -18,6 +18,7 @@ function SearchScreen() {
     document.body.style.backgroundColor = isWhite ? "#ffffff" : "#120017";
     setIsLightMode(isWhite);
   };
+
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
@@ -29,14 +30,52 @@ function SearchScreen() {
       setError(null);
     } catch (err) {
       console.error(err);
-      setError("Failed to search movies");
+      setError("Failed to search cats");
     } finally {
       setLoading(false);
     }
   };
+
+  const loadRandomCat = async () => {
+    try {
+      setLoading(true);
+      const randomCat = await getRandomCatImg();
+      const randomCatId = randomCat.id;
+      const randomCatTags = randomCat.tags;
+      if (randomCatTags != "") {
+        setCatImgTags(randomCatTags);
+      } else {
+        setCatImgTags("No Tags");
+      }
+      const imageUrl = `https://cataas.com/cat/${randomCatId}?type=medium`;
+      console.clear();
+      console.log("🐱 Image URL:", imageUrl);
+      console.log("🐱 Image Id: ", randomCatId);
+      console.log("🐱 Image Tags: ", randomCatTags);
+      setCatImg(imageUrl);
+      setCatImgId(randomCatId);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to load cat");
+    } finally {
+      setLoading(false);
+    }
+
+    let form = document.getElementById("theSearchFormThing").addEventListener('submit', function(e) {
+      e.preventDefault(); 
+    let TagSearch = form.elements["search-input"];
+      console.log(TagSearch);
+    }
+  )
+    ;
   return (
     <div className="home">
-      <form onSubmit={handleSearch} className="search-form">
+      <form
+        id="theSearchFormThing"
+        onSubmit={handleSearch}
+        className="search-form"
+      >
         <input
           type="text"
           placeholder="Search for Cats With Tags..."
@@ -88,10 +127,15 @@ function SearchScreen() {
           </div>
           <div className="searchOption">
             <label for="FontColor">(Optional) Font Color: </label>
-            <input type="color" id="FontColor" name="FontColor"></input>
+            <input
+              type="color"
+              className="FontColorBox"
+              id="FontColor"
+              name="FontColor"
+            ></input>
           </div>
         </div>
-        {/* <input type="submit"></input> */}
+        <input type="submit" className="submit" value={"Search Cats"}></input>
       </form>{" "}
       <button type="button" className="darkBtn" onClick={changeBackground}>
         {isLightMode ? "🌙" : "☀️"}

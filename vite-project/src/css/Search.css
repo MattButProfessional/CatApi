@@ -29,6 +29,9 @@ label {
   height: 30px;
   width: 30px;
 }
+.checkbox:hover {
+  cursor: pointer;
+}
 
 .searchOption {
   padding-top: 20px;
@@ -41,6 +44,10 @@ label {
   font-size: large;
   height: 30px;
   width: 120px;
+}
+
+.dropDown:hover {
+  cursor: pointer;
 }
 
 .textOverlay {
@@ -63,4 +70,22 @@ label {
   padding-right: 20px;
   padding-left: 20px;
   border-radius: 10px;
+}
+
+.submit {
+  margin: 50px;
+  width: 500px;
+  height: 100px;
+  background-color: #631786;
+  color: #d19de8;
+  font-size: 40px;
+  border-radius: 10px;
+  border-width: 0px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+.FontColorBox:hover {
+  cursor: pointer;
 }

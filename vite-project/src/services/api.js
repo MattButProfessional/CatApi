@@ -1,8 +1,8 @@
-const BASE_URL = "https://cataas.com/api/cats?tags=&skip=0&limit=1500";
+const BASE_URL = "https://cataas.com/api/cats?tags=";
 
 export const getRandomCatImg = async () => {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(`${BASE_URL}&skip=0&limit=1500`);
     if (!res.ok) {
       throw new Error("Network response was not ok");
     }
@@ -15,8 +15,8 @@ export const getRandomCatImg = async () => {
     return null;
   }
 };
-export const searchCats = async (query) => {
-  const response = await fetch(BASE_URL);
+export const searchCats = async () => {
+  const response = await fetch(`${BASE_URL}${gif}${tags}&skip=0&limit=1500`);
   const data = await response.json();
   return data.results;
 };
